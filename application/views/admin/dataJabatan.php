@@ -10,8 +10,8 @@
 
   <a class="btn btn-sm btn-success mb-3" href="<?= base_url('admin/dataJabatan/tambahData') ?>">
     <i class="fas fa-plus"></i> Tambah Data</a>
-
-  <table class="table table-bordered table-striped">
+  <?= $this->session->flashdata('pesan'); ?>
+  <table class="table table-bordered table-striped mt-2">
     <tr class="text-center">
       <th>No</th>
       <th>Nama Jabatan</th>

@@ -1,7 +1,7 @@
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-white" style="margin-top: 250px;">
   <div class="container my-auto">
-    <div class="copyright text-center my-auto fixed-bottom">
+    <div class="copyright text-center my-auto ">
       <span>Copyright &copy; STT SAPPI 2021</span>
     </div>
   </div>
