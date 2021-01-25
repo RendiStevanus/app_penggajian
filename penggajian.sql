@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2021 at 06:06 PM
+-- Generation Time: Jan 25, 2021 at 04:36 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -40,7 +40,11 @@ CREATE TABLE `data_jabatan` (
 --
 
 INSERT INTO `data_jabatan` (`id_jabatan`, `nama_jabatan`, `gaji_pokok`, `tj_transport`, `uang_makan`) VALUES
-(1, 'staff marketing', '4000000', '800000', '500000');
+(1, 'KETUA', '6000000', '300000', '500000'),
+(2, 'WAKIL KETUA', '4000000', '300000', '500000'),
+(3, 'STAF IT', '3000000', '3000000', '500000'),
+(4, 'Direktur', '9000000', '1000000', '500000'),
+(6, 'CEO', '10000000', '1000000', '500000');
 
 -- --------------------------------------------------------
 
@@ -73,7 +77,7 @@ CREATE TABLE `data_pegawai` (
   `jenis_kelamin` varchar(20) NOT NULL,
   `jabatan` varchar(50) NOT NULL,
   `tanggal_masuk` date NOT NULL,
-  `status` varchar(10) NOT NULL,
+  `status` varchar(50) NOT NULL,
   `photo` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -82,8 +86,10 @@ CREATE TABLE `data_pegawai` (
 --
 
 INSERT INTO `data_pegawai` (`id_pegawai`, `nik`, `nama_pegawai`, `jenis_kelamin`, `jabatan`, `tanggal_masuk`, `status`, `photo`) VALUES
-(1, '12345667890', 'Doni Harida', 'Laki-laki', 'Staf Marketing', '2020-08-01', '1', 'doni.jpg'),
-(2, '123312', 'Andi', 'Laki-laki', 'Admin', '2021-01-04', '1', 'andi.png');
+(1, '12345667890', 'Doni Harida', 'Laki-laki', 'Staf Marketing', '2020-08-01', 'Karyawan Tetap', 'img_avatar.jpg'),
+(2, '123312', 'Andi', 'Laki-laki', 'Admin', '2021-01-04', 'Pegawai Tidak Tetap', 'img_avatar2.jpg'),
+(3, '4321', 'Rendy Stepanus', 'Laki-Laki', 'WAKIL KETUA', '2021-01-04', 'Pegawai Tetap', 'img_avatar3.jpg'),
+(5, '32131231', 'Sisi', 'Perempuan', 'Direktur', '2021-01-27', 'Pegawai Tidak Tetap', 'img_avatar21.jpg');
 
 --
 -- Indexes for dumped tables
@@ -115,7 +121,7 @@ ALTER TABLE `data_pegawai`
 -- AUTO_INCREMENT for table `data_jabatan`
 --
 ALTER TABLE `data_jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `data_kehadiran`
@@ -127,7 +133,7 @@ ALTER TABLE `data_kehadiran`
 -- AUTO_INCREMENT for table `data_pegawai`
 --
 ALTER TABLE `data_pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
