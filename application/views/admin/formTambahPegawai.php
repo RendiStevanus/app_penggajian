@@ -8,7 +8,7 @@
   <!-- Main Content -->
   <div class="card" style="width: 60%;">
     <div class="card-body">
-      <form action="<?= base_url('admin/DataPegawai/tambahDataAksi') ?>" method="POST" enctype="multiprt/form-data">
+      <form method="POST" action="<?= base_url('admin/dataPegawai/tambahDataAksi') ?>" enctype="multipart/form-data">
 
         <div class="form-group">
           <label>NIK</label>
@@ -26,7 +26,7 @@
           <label>Jenis Kelamin</label>
           <select name="jenis_kelamin" class="form-control">
             <option>-- Pilih Jenis Kelamin --</option>
-            <option value="Laki-laki">Laki-Laki</option>
+            <option value="Laki-laki">Laki-laki</option>
             <option value="Perempuan">Perempuan</option>
           </select>
           <?= form_error('jenis_kelamin', '<div class="text-small text-danger"></div>') ?>
@@ -53,7 +53,7 @@
 
         <div class="form-group">
           <label>Status Pegawai</label>
-          <select name="jabatan" class="form-control">
+          <select name="status" class="form-control">
             <option>-- Pilih Status Pegawai --</option>
             <option value="Pegawai Tetap">Pegawai Tetap</option>
             <option value="Pegawai Tidak Tetap">Pegawai Tidak Tetap</option>
