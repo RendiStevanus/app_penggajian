@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2021 at 04:36 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Jan 27, 2021 at 06:17 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,13 +56,20 @@ CREATE TABLE `data_kehadiran` (
   `id_kehadiran` int(11) NOT NULL,
   `bulan` varchar(15) NOT NULL,
   `nik` varchar(50) NOT NULL,
-  `nama_karyawan` varchar(225) NOT NULL,
+  `nama_pegawai` varchar(225) NOT NULL,
   `jenis_kelamin` varchar(50) NOT NULL,
   `nama_jabatan` varchar(50) NOT NULL,
   `hadir` int(11) NOT NULL,
   `sakit` int(11) NOT NULL,
   `alpha` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data_kehadiran`
+--
+
+INSERT INTO `data_kehadiran` (`id_kehadiran`, `bulan`, `nik`, `nama_pegawai`, `jenis_kelamin`, `nama_jabatan`, `hadir`, `sakit`, `alpha`) VALUES
+(1, '082020', '12345667890', 'Doni Harida', 'Laki-laki', 'Staf Marketing', 20, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -88,8 +95,7 @@ CREATE TABLE `data_pegawai` (
 INSERT INTO `data_pegawai` (`id_pegawai`, `nik`, `nama_pegawai`, `jenis_kelamin`, `jabatan`, `tanggal_masuk`, `status`, `photo`) VALUES
 (1, '12345667890', 'Doni Harida', 'Laki-laki', 'Staf Marketing', '2020-08-01', 'Karyawan Tetap', 'img_avatar.jpg'),
 (2, '123312', 'Andi', 'Laki-laki', 'Admin', '2021-01-04', 'Pegawai Tidak Tetap', 'img_avatar2.jpg'),
-(3, '4321', 'Rendy Stepanus', 'Laki-Laki', 'WAKIL KETUA', '2021-01-04', 'Pegawai Tetap', 'img_avatar3.jpg'),
-(5, '32131231', 'Sisi', 'Perempuan', 'Direktur', '2021-01-27', 'Pegawai Tidak Tetap', 'img_avatar21.jpg');
+(3, '4321', 'Rendy Stepanus', 'Laki-Laki', 'WAKIL KETUA', '2021-01-04', 'Pegawai Tetap', 'img_avatar3.jpg');
 
 --
 -- Indexes for dumped tables
@@ -127,7 +133,7 @@ ALTER TABLE `data_jabatan`
 -- AUTO_INCREMENT for table `data_kehadiran`
 --
 ALTER TABLE `data_kehadiran`
-  MODIFY `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `data_pegawai`
