@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2021 at 06:17 AM
+-- Generation Time: Jan 28, 2021 at 10:01 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -69,7 +69,8 @@ CREATE TABLE `data_kehadiran` (
 --
 
 INSERT INTO `data_kehadiran` (`id_kehadiran`, `bulan`, `nik`, `nama_pegawai`, `jenis_kelamin`, `nama_jabatan`, `hadir`, `sakit`, `alpha`) VALUES
-(1, '082020', '12345667890', 'Doni Harida', 'Laki-laki', 'Staf Marketing', 20, 1, 1);
+(1, '082020', '12345667890', 'Doni Harida', 'Laki-laki', 'KETUA', 20, 1, 1),
+(2, '062020', '123312', 'Andi', 'Laki-laki', 'WAKIL KETUA', 10, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -93,9 +94,9 @@ CREATE TABLE `data_pegawai` (
 --
 
 INSERT INTO `data_pegawai` (`id_pegawai`, `nik`, `nama_pegawai`, `jenis_kelamin`, `jabatan`, `tanggal_masuk`, `status`, `photo`) VALUES
-(1, '12345667890', 'Doni Harida', 'Laki-laki', 'Staf Marketing', '2020-08-01', 'Karyawan Tetap', 'img_avatar.jpg'),
-(2, '123312', 'Andi', 'Laki-laki', 'Admin', '2021-01-04', 'Pegawai Tidak Tetap', 'img_avatar2.jpg'),
-(3, '4321', 'Rendy Stepanus', 'Laki-Laki', 'WAKIL KETUA', '2021-01-04', 'Pegawai Tetap', 'img_avatar3.jpg');
+(1, '12345667890', 'Doni Harida', 'Laki-laki', 'KETUA', '2020-08-01', 'Karyawan Tetap', 'img_avatar.jpg'),
+(2, '123312', 'Andi', 'Laki-laki', 'WAKIL KETUA', '2021-01-04', 'Pegawai Tidak Tetap', 'img_avatar2.jpg'),
+(3, '4321', 'Rendy Stepanus', 'Laki-Laki', 'Direktur', '2021-01-04', 'Pegawai Tetap', 'img_avatar3.jpg');
 
 --
 -- Indexes for dumped tables
@@ -133,7 +134,7 @@ ALTER TABLE `data_jabatan`
 -- AUTO_INCREMENT for table `data_kehadiran`
 --
 ALTER TABLE `data_kehadiran`
-  MODIFY `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `data_pegawai`
