@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2021 at 10:01 AM
+-- Generation Time: Feb 01, 2021 at 09:57 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -70,7 +70,16 @@ CREATE TABLE `data_kehadiran` (
 
 INSERT INTO `data_kehadiran` (`id_kehadiran`, `bulan`, `nik`, `nama_pegawai`, `jenis_kelamin`, `nama_jabatan`, `hadir`, `sakit`, `alpha`) VALUES
 (1, '082020', '12345667890', 'Doni Harida', 'Laki-laki', 'KETUA', 20, 1, 1),
-(2, '062020', '123312', 'Andi', 'Laki-laki', 'WAKIL KETUA', 10, 1, 1);
+(2, '062020', '123312', 'Andi', 'Laki-laki', 'WAKIL KETUA', 10, 1, 1),
+(3, '012020', '123312', 'Andi', 'Laki-laki', 'WAKIL KETUA', 20, 2, 1),
+(4, '012020', '12345667890', 'Doni Harida', 'Laki-laki', 'KETUA', 0, 0, 0),
+(5, '012020', '4321', 'Rendy Stepanus', 'Laki-Laki', 'Direktur', 0, 0, 0),
+(6, '012021', '123312', 'Andi', 'Laki-laki', 'WAKIL KETUA', 24, 0, 0),
+(7, '012021', '12345667890', 'Doni Harida', 'Laki-laki', 'KETUA', 22, 2, 2),
+(8, '012021', '4321', 'Rendy Stepanus', 'Laki-Laki', 'Direktur', 23, 3, 0),
+(9, '022021', '123312', 'Andi', 'Laki-laki', 'WAKIL KETUA', 20, 1, 2),
+(10, '022021', '12345667890', 'Doni Harida', 'Laki-laki', 'KETUA', 21, 1, 1),
+(11, '022021', '4321', 'Rendy Stepanus', 'Laki-Laki', 'Direktur', 19, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -98,6 +107,25 @@ INSERT INTO `data_pegawai` (`id_pegawai`, `nik`, `nama_pegawai`, `jenis_kelamin`
 (2, '123312', 'Andi', 'Laki-laki', 'WAKIL KETUA', '2021-01-04', 'Pegawai Tidak Tetap', 'img_avatar2.jpg'),
 (3, '4321', 'Rendy Stepanus', 'Laki-Laki', 'Direktur', '2021-01-04', 'Pegawai Tetap', 'img_avatar3.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `potongan_gaji`
+--
+
+CREATE TABLE `potongan_gaji` (
+  `id` int(11) NOT NULL,
+  `potongan` varchar(120) NOT NULL,
+  `jml_potongan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `potongan_gaji`
+--
+
+INSERT INTO `potongan_gaji` (`id`, `potongan`, `jml_potongan`) VALUES
+(1, 'Alpha', 100000);
+
 --
 -- Indexes for dumped tables
 --
@@ -121,6 +149,12 @@ ALTER TABLE `data_pegawai`
   ADD PRIMARY KEY (`id_pegawai`);
 
 --
+-- Indexes for table `potongan_gaji`
+--
+ALTER TABLE `potongan_gaji`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -134,13 +168,19 @@ ALTER TABLE `data_jabatan`
 -- AUTO_INCREMENT for table `data_kehadiran`
 --
 ALTER TABLE `data_kehadiran`
-  MODIFY `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `data_pegawai`
 --
 ALTER TABLE `data_pegawai`
   MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `potongan_gaji`
+--
+ALTER TABLE `potongan_gaji`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
