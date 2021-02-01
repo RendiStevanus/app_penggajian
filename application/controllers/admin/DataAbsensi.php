@@ -43,8 +43,8 @@ class DataAbsensi extends CI_Controller
 
       $post = $this->input->post();
 
-      foreach ($post as $key) {
-        if ($post['bulan'][$key] != '' || $post['nil'][$key] != '') {
+      foreach ($post['bulan'] as $key => $value) {
+        if ($post['bulan'][$key] != '' || $post['nik'][$key] != '') {
           $simpan[] = array(
             'bulan'         => $post['bulan'][$key],
             'nik'           => $post['nik'][$key],
@@ -57,6 +57,19 @@ class DataAbsensi extends CI_Controller
           );
         }
       }
+
+      $this->penggajianModel->insert_batch('data_kehadiran', $simpan);
+      $this->session->set_flashdata(
+        'pesan',
+        '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data berhasil ditambahkan!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>'
+      );
+
+      redirect('admin/dataAbsensi');
     }
 
     $data['judul'] = 'Input Kehadiran Pegawai';

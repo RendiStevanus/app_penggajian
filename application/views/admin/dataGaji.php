@@ -8,7 +8,7 @@
   <!-- Main Content -->
   <div class="card mb-3">
     <div class="card-header bg-primary text-white">
-      Input Data Kehadiran Pegawai
+      Filter Data Gaji Pegawai
     </div>
     <div class="card-body">
       <form class="form-inline">
@@ -45,7 +45,8 @@
           </select>
         </div>
 
-        <button type="submit" class="btn btn-sm btn-primary mb-2 ml-auto"><i class="fas fa-eye"></i> Generate</button>
+        <button type="submit" class="btn btn-sm btn-primary mb-2 ml-auto"><i class="fas fa-eye"></i> Tampilka Data</button>
+        <a href="" class="btn btn-sm btn-success mb-2 ml-2"><i class="fas fa-plus"></i> Cetak Daftar Gaji</a>
       </form>
     </div>
   </div>
@@ -66,42 +67,53 @@
   <div class="alert alert-info">
     Menampilkan Data Kehadiran Pegawai Bulan: <span class="font-weight-bold"><?= $bulan; ?></span> Tahun: <span class="font-weight-bold"><?= $tahun; ?></span>
   </div>
-  <form action="" method="POST">
-    <button class="btn btn-success mb-3" type="submit" name="submit" value="submit">Simpan</button>
-    <table class="table table-bordered table-striped">
-      <tr class="text-center">
-        <th>No</th>
-        <th>NIK</th>
-        <th>Nama Pegawai</th>
-        <th>Jenis Kelamin</th>
-        <th>Jabatan</th>
-        <th width="8%">Hadir</th>
-        <th width="8%">Sakit</th>
-        <th width="8%">Alpha</th>
-      </tr>
 
-      <?php $no = 1;
-      foreach ($input_absensi as $a) : ?>
+  <?php
+  $jml_data = count($gaji);
+  if ($jml_data > 0) {
+  ?>
 
-        <tr>
-          <input type="hidden" class="form-control" name="bulan[]" value="<?= $bulantahun; ?>">
-          <input type="hidden" class="form-control" name="nik[]" value="<?= $a->nik; ?>">
-          <input type="hidden" class="form-control" name="nama_pegawai[]" value="<?= $a->nama_pegawai; ?>">
-          <input type="hidden" class="form-control" name="jenis_kelamin[]" value="<?= $a->jenis_kelamin; ?>">
-          <input type="hidden" class="form-control" name="nama_jabatan[]" value="<?= $a->nama_jabatan; ?>">
-          <td><?= $no++; ?></td>
-          <td><?= $a->nik ?></td>
-          <td><?= $a->nama_pegawai ?></td>
-          <td><?= $a->jenis_kelamin ?></td>
-          <td><?= $a->nama_jabatan; ?></td>
-          <td><input type="number" name="hadir[]" class="form-control" value="0"></td>
-          <td><input type="number" name="sakit[]" class="form-control" value="0"></td>
-          <td><input type="number" name="alpha[]" class="form-control" value="0"></td>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <tr class="text-center">
+          <th>No</th>
+          <th>NIK</th>
+          <th>Nama Pegawai</th>
+          <th>Jenis Kelamin</th>
+          <th>Jabatan</th>
+          <th>Gaji Pokok</th>
+          <th>Tj.Transport</th>
+          <th>Uang Makan</th>
+          <th>Potongan</th>
+          <th>Total Gaji</th>
         </tr>
 
-      <?php endforeach; ?>
-    </table>
-  </form>
-  <!-- End Main Content -->
+        <?php foreach ($potongan as $p) {
+          $alpha = $p->jml_potongan;
+        } ?>
+
+        <?php $no = 1;
+        foreach ($gaji as $g) : ?>
+          <?php $potongan = $g->alpha * $alpha ?>
+          <tr>
+            <td><?= $no++; ?></td>
+            <td><?= $g->nik; ?></td>
+            <td><?= $g->nama_pegawai; ?></td>
+            <td><?= $g->jenis_kelamin; ?></td>
+            <td><?= $g->nama_jabatan; ?></td>
+            <td>Rp.<?= number_format($g->gaji_pokok, 0, ',', '.'); ?></td>
+            <td>Rp.<?= number_format($g->tj_transport, 0, ',', '.'); ?></td>
+            <td>Rp.<?= number_format($g->uang_makan, 0, ',', '.'); ?></td>
+            <td>Rp.<?= number_format($potongan, 0, ',', '.'); ?></td>
+            <td>Rp.<?= number_format($g->gaji_pokok + $g->tj_transport + $g->uang_makan - $potongan, 0, ',', '.'); ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </table>
+    <?php } else { ?>
+      <span class="badge badge-danger"><i class="fas fa-info-circle"></i> Data Gaji kosong! Silahkan input data kehadiran pada bulan dan tahun yang Anda pilih!</span>
+    <?php } ?>
+    </div>
+
+    <!-- End Main Content -->
 
 </div>
