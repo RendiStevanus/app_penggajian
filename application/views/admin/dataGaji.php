@@ -45,8 +45,29 @@
           </select>
         </div>
 
-        <button type="submit" class="btn btn-sm btn-primary mb-2 ml-auto"><i class="fas fa-eye"></i> Tampilka Data</button>
-        <a href="" class="btn btn-sm btn-success mb-2 ml-2"><i class="fas fa-plus"></i> Cetak Daftar Gaji</a>
+        <?php
+        if ((isset($_GET['bulan']) && $_GET['bulan'] != '') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {
+          $bulan = $_GET['bulan'];
+          $tahun = $_GET['tahun'];
+          $bulantahun = $bulan . $tahun;
+        } else {
+          $bulan = date('m');
+          $tahun = date('Y');
+
+          $bulantahun = $bulan . $tahun;
+        }
+        ?>
+
+        <button type="submit" class="btn btn-sm btn-primary mb-2 ml-auto"><i class="fas fa-eye"></i> Tampilkan Data</button>
+
+        <!-- pengkondisian cetak data gaji -->
+        <?php
+        if (count($gaji) > 0) { ?>
+          <a href="<?= base_url('admin/dataPenggajian/cetakGaji?bulan=' . $bulan), '&tahun=' . $tahun ?>" target="_blank" class="btn btn-sm btn-success mb-2 ml-2"><i class="fas fa-print"></i> Cetak Daftar Gaji</a>
+        <?php } else { ?>
+          <button type="button" class="btn btn-sm btn-success mb-2 ml-2" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-print"></i> Cetak Daftar Gaji
+          </button>
+        <?php } ?>
       </form>
     </div>
   </div>
@@ -116,4 +137,24 @@
 
     <!-- End Main Content -->
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informasi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Data Gaji Kosong! Silahkan input data kehadiran pada bulan dan tahun yang dipilih!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+      </div>
+    </div>
+  </div>
 </div>
